@@ -23,16 +23,16 @@ INCLUDE		= so_long.h \
 
 LIBFT_A		= libft/libft.a
 MINI_LIBX	= mlx/libmlx.a
-FRAMEWORK	= -framework OpenGL -framework AppKit
+FRAMEWORK	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-.PHONY: all clean fclean re bonus libft norm
+.PHONY: all clean fclean re bonus libft norm mlx
 
 .o:.c 		$(INCLUDE)
 			$(CC) $(CFLAGS) $< -o $@
 
 all:		libft mlx $(NAME)
 
-${NAME}:	$(OBJS) $(INCLUDE)
+$(NAME):	$(OBJS) $(INCLUDE)
 			$(CC) $(OBJS) $(LIBFT_A) $(MINI_LIBX) $(FRAMEWORK) -o $(NAME)
 
 bonus:		libft $(NAME)

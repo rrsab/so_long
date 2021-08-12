@@ -37,6 +37,8 @@ $(NAME):	$(OBJS)
 bonus:		$(OBJS_B) $(NAME)	
 	@make OBFS="$(OBJS_B)" all
 
+lib:		all bonus
+
 clean:		
 			$(RM) $(OBJS) $(OBJS_B)
 

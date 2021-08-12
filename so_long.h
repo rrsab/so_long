@@ -22,6 +22,8 @@ typedef struct s_solong
 
 typedef struct	s_data
 {
+	void	*mlx_p;
+	void	*mlx_win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

@@ -16,6 +16,7 @@ endif
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 SRCS 		= src/so_long.c \
 			src/ft_utils1.c \
+			src/ft_actions1.c src/ft_checkmap.c src/ft_game.c\
 			gnl/get_next_line.c
 
 SRCS_BONUS	=

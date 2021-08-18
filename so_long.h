@@ -12,41 +12,55 @@
 #include "libft/libft.h"
 #include "gnl/get_next_line.h"
 #include "mlx/mlx.h"
+#include <stddef.h>
 
-# define M 64
-# define A 97
-# define W 119
-# define D 100
-# define S 115
-# define ESC 65307
-# define SAND 0xF5DCA0
-# define BLACK 0xFF000000
-# define RIGHT 65361
-# define LEFR 65363
-# define ESC 65307
-
-typedef struct s_solong
+typedef struct st_pam
 {
-	void	*mlx_p;
-	void	*mlx_win;
+	char	**map;
+	int		width;
+	int		height;
+	int		sum_player;
+	int		sum_barrier;
+	int		sum_goal;
+	int		sum_exit;
+}	st_map;
 
-}	t_solong;
-
-typedef struct	s_data
-{
-	void	*mlx_p;
-	void	*mlx_win;
+typedef struct	s_vars {
+	int		count;
+	char	**var_map;
+	void	*mlx;
+	void	*win;
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	void	*img_person;
+	void	*img_person_up;
+	void	*img_person_left;
+	void	*img_person_right;
+	void	*img_person_down;
+	void	*img_eva_dark;
+	void	*img_eva_white;
+	void	*img_enemy;
+	void	*img_barrier;
+	void	*img_space;
+	int		img_width;
+	int		img_height;
+	int		person_x;
+	int		person_y;
+	int		eva_x;
+	int		eva_y;
+	int		sum_goals;
+}				t_vars;
 
-void	ft_perror(char *str);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		key_hook(int keycode, t_data *img);
-int		ft_close(int keycode, t_data *img);
+int		get_next_line(int fd, char **line);
+
+void	error_output(char *error);
+int		ft_strcmp(char *s1, char *s2);
+
+void	check_map_name(char *map_name);
+void	check_map_empty(st_map *lst, char *map);
+void	check_map(st_map *lst, int len_line, int gnl);
+void	check_map_parametrs(st_map *lst);
+void	work_minilib(st_map *lst);
+void	move_person(t_vars *vars, int keycode);
 
 #endif

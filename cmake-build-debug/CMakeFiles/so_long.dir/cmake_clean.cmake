@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/so_long.dir/src/ft_actions1.c.o"
+  "CMakeFiles/so_long.dir/src/ft_checkmap.c.o"
+  "CMakeFiles/so_long.dir/src/ft_game.c.o"
   "CMakeFiles/so_long.dir/src/ft_utils1.c.o"
   "CMakeFiles/so_long.dir/src/so_long.c.o"
   "so_long"

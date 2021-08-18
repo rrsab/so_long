@@ -1,36 +1,27 @@
 #include "../so_long.h"
 
-void	ft_perror(char *str)
+void check_map_name(char *map_name)
 {
-	perror(str);
-	exit(EXIT_FAILURE);
+    char *map_extension;
+
+    if (!(map_extension = ft_strrchr(map_name, '.')))
+        error_output("Ne nashel tochki");
+    if (ft_strcmp(map_extension, ".ber") != 0)
+        error_output("Ne .ber extension");
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void check_map(st_map *lst, int len_line, int gnl)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+    if (len_line == 0)
+        error_output("File is emty");
+    if (lst->height != 0 && len_line != lst->width)
+        error_output("It is not rectangle");
+    if (gnl == 0 && lst->height == 0)
+        error_output("Onlu one stroka");
 }
 
-int		key_hook(int keycode, t_data *img)
+void error_output(char *error)
 {
-	int	i;
-	int j;
-
-	i = keycode;
-	j = img->endian;
-	printf("Press key_hook = %d\n", i);
-	return (i);
-}
-
-int		ft_close(int keycode, t_data *img)
-{
-	int	i;
-
-	i = keycode;
-	i = img->endian;
-	mlx_destroy_window(img->mlx_p, img->mlx_win);
-	exit(EXIT_SUCCESS);
+    printf("%s", error);
+    exit(1);
 }

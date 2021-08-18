@@ -11,7 +11,7 @@
 #include <string.h>
 #include "libft/libft.h"
 #include "gnl/get_next_line.h"
-#include "mlx/mlx.h"
+#include <mlx.h>
 #include <stddef.h>
 
 typedef struct st_pam

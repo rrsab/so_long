@@ -4,7 +4,7 @@ void check_map_name(char *map_name)
 {
     char *map_extension;
 
-    if (!(map_extension = ft_strrchr(map_name, '.')))
+    if (!(map_extension = ft_strchr(map_name, '.')))
         error_output("Ne nashel tochki");
     if (ft_strcmp(map_extension, ".ber") != 0)
         error_output("Ne .ber extension");
@@ -24,4 +24,14 @@ void error_output(char *error)
 {
     printf("%s", error);
     exit(1);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

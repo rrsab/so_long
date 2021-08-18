@@ -54,10 +54,10 @@ void init_image(t_vars *vars,st_map *lst)
     vars->var_map = lst->map;
     vars->img_width = 64;
     vars->img_height = 64;
-    vars->img_person_up = check_image("./person_up.XPM");
-    vars->img_person_right = check_image("./person_right.XPM");
-    vars->img_person_left = check_image("./person_left.XPM");
-    vars->img_person_down = check_image("./person_down.XPM");
+    vars->img_person_up = check_image("./tiger_up.XPM");
+    vars->img_person_right = check_image("./tiger_right.XPM");
+    vars->img_person_left = check_image("./tiger_left.XPM");
+    vars->img_person_down = check_image("./tiger_down.XPM");
     vars->img_barrier = check_image("./barrier.XPM");
     vars->img_space = check_image("./space.XPM");
     vars->img_enemy = check_image("./enemy.XPM");

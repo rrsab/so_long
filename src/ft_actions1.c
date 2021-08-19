@@ -10,7 +10,7 @@ void move_robots(t_vars *vars, char s, int x, int y)
     step = ft_itoa(vars->count);
     vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_barrier, &vars->img_width, &vars->img_height);
     mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 1 * 64, 0 * 64);
-    mlx_string_put(vars->mlx, vars->win, 64, 0, 0x00000000, step);
+    mlx_string_put(vars->mlx, vars->win, 64, 10, 0x00000000, step);
     printf("Step: %d\n", vars->count);
     if (s == '0' || s == 'G')
     {

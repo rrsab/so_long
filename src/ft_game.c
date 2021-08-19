@@ -14,7 +14,7 @@ int	ft_close(int keycode, t_vars *vars)
 
 void image_print(char a, t_vars *vars, int i, int k)
 {
-    mlx_string_put(vars->mlx, vars->win, 0, 0, 0x00000000, "Step = ");
+    mlx_string_put(vars->mlx, vars->win, 10, 10, 0x00000000, "Step = ");
     if (a == '1')
         vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_barrier, &vars->img_width, &vars->img_height);
     else if (a == '0')
@@ -37,7 +37,8 @@ void image_print(char a, t_vars *vars, int i, int k)
         vars->eva_y = k;
         vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_eva_dark, &vars->img_width, &vars->img_height);
     }
-    mlx_put_image_to_window(vars->mlx, vars->win, vars->img, i * 64, k * 64);
+    mlx_put_image_to_window(vars->mlx, vars->win, vars->img, i *
+    vars->img_width, k * vars->img_height);
 }
 
 char	*check_image(char *image)
@@ -58,11 +59,11 @@ void init_image(t_vars *vars,st_map *lst)
     vars->img_person_right = check_image("./tiger_right.XPM");
     vars->img_person_left = check_image("./tiger_left.XPM");
     vars->img_person_down = check_image("./tiger_down.XPM");
-    vars->img_barrier = check_image("./barrier.XPM");
-    vars->img_space = check_image("./space.XPM");
+    vars->img_barrier = check_image("./wall.XPM");
+    vars->img_space = check_image("./ground.XPM");
     vars->img_enemy = check_image("./enemy.XPM");
-    vars->img_eva_dark = check_image("./eva1.XPM");
-    vars->img_eva_white = check_image("./eva2.XPM");
+    vars->img_eva_dark = check_image("./boss.XPM");
+    vars->img_eva_white = check_image("./viktory.XPM");
 }
 
 void image_position(st_map *lst, t_vars *vars)
@@ -90,7 +91,8 @@ void work_minilib(st_map *lst)
     vars.mlx = mlx_init();
     if (lst->width > 37 || lst->height > 20)
         error_output("Went beyond the map");
-    vars.win = mlx_new_window(vars.mlx, lst->width * 64, lst->height * 64, "so_long");
+    vars.win = mlx_new_window(vars.mlx, lst->width * 64, lst->height * 64,
+							  "so_long");
     image_position(lst, &vars);
     mlx_hook(vars.win, 2, 0, ft_close, &vars);
     mlx_loop(vars.mlx);

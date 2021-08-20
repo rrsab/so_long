@@ -30,7 +30,7 @@ void check_other_wall(st_map *lst)
 
 void init_parametrs(st_map *lst)
 {
-    lst->sum_barrier = 0;
+    lst->sum_wall = 0;
     lst->sum_exit = 0;
     lst->sum_goal = 0;
     lst->sum_player = 0;
@@ -39,44 +39,52 @@ void init_parametrs(st_map *lst)
 void allowed_symbols(char c, st_map *lst)
 {
     if (c == '1')
-        lst->sum_barrier++;
-    if (c == 'G')
+        lst->sum_wall++;
+    if (c == 'C')
         lst->sum_goal++;
     if (c == 'P')
     {
         lst->sum_player++;
-        if (lst->sum_player > 1)
-            error_output("Player more than 1");
+      //  if (lst->sum_player == 0)
+        //    error_output("Map must have at least one starting position.");
     }
     if (c == 'E')
     {
         lst->sum_exit++;
-        if (lst->sum_exit > 1)
-            error_output("Exit more than 1");
+     //   if (lst->sum_exit > 1)
+     //       error_output("Exit more than 1");
     }
-    if (!(c == '1' || c == '0' || c == 'P' || c == 'G' || c == 'E'))
+    if (!(c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E'))
     {
-        error_output("Nedopustim symbols");
+        error_output("The map must be composed of only 5 possible characters: 0 for an empty\n"
+					 "space, 1 for a wall, C for a collectible, E for map exit and P for the player’s\n"
+					 "starting position.");
         exit(1);
     }
 }
 
 void check_all_other(st_map *lst, int i, int k)
 {
-    while(i != lst->height -1)
+    while(i != lst->height - 1)
     {
         while(k != lst->width - 1)
         {
             allowed_symbols(lst->map[i][k], lst);
             k++;
         }
-        if (lst->sum_barrier == lst->width - 2 && lst->sum_goal > 0)
-            error_output("nekuda idti");
+        //if (lst->sum_wall == lst->width - 2 && lst->sum_goal > 0)
+          //  error_output("nekuda idti");
         k = 0;
         i++;
     }
-    if (lst->sum_exit == 0 || lst->sum_player == 0 || lst->sum_goal == 0)
-        error_output("net P or E or G");
+//    if (lst->sum_exit == 0 || lst->sum_player == 0 || lst->sum_goal == 0)
+	if (lst->sum_player == 0)
+			error_output("Map must have at least one starting position.");
+	else if (lst->sum_exit == 0)
+		error_output("Map must have at least one exit.");
+	else if (lst->sum_goal == 0)
+		error_output("Map must have at least one collectible.");
+    //    error_output("net P or E or C");
 }
 
 void check_map_parametrs(st_map *lst)

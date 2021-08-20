@@ -2,7 +2,7 @@
 
 int	ft_close(int keycode, t_vars *vars)
 {
-    if (keycode == 126 || keycode == 125 || keycode == 124 || keycode == 123)
+    if (keycode == 0 || keycode == 13 || keycode == 2 || keycode == 1)
         move_person(vars, keycode);
     if (keycode == 53)
     {
@@ -16,10 +16,10 @@ void image_print(char a, t_vars *vars, int i, int k)
 {
     mlx_string_put(vars->mlx, vars->win, 10, 10, 0x00000000, "Step = ");
     if (a == '1')
-        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_barrier, &vars->img_width, &vars->img_height);
+        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_wall, &vars->img_width, &vars->img_height);
     else if (a == '0')
-        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_space, &vars->img_width, &vars->img_height);
-    else if (a == 'G')
+        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_ground, &vars->img_width, &vars->img_height);
+    else if (a == 'C')
     {
         vars->sum_goals++;
         vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_enemy, &vars->img_width, &vars->img_height);
@@ -27,15 +27,15 @@ void image_print(char a, t_vars *vars, int i, int k)
 
     else if (a == 'P')
     {
-        vars->person_x = i;
-        vars->person_y = k;
-        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_person_up, &vars->img_width, &vars->img_height);
+        vars->player_x = i;
+        vars->player_y = k;
+        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_player_up, &vars->img_width, &vars->img_height);
     }
     else if (a == 'E')
     {
-        vars->eva_x = i;
-        vars->eva_y = k;
-        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_eva_dark, &vars->img_width, &vars->img_height);
+        vars->boss_x = i;
+        vars->boss_y = k;
+        vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_boss, &vars->img_width, &vars->img_height);
     }
     mlx_put_image_to_window(vars->mlx, vars->win, vars->img, i *
     vars->img_width, k * vars->img_height);
@@ -55,15 +55,15 @@ void init_image(t_vars *vars,st_map *lst)
     vars->var_map = lst->map;
     vars->img_width = 64;
     vars->img_height = 64;
-    vars->img_person_up = check_image("./tiger_up.XPM");
-    vars->img_person_right = check_image("./tiger_right.XPM");
-    vars->img_person_left = check_image("./tiger_left.XPM");
-    vars->img_person_down = check_image("./tiger_down.XPM");
-    vars->img_barrier = check_image("./wall.XPM");
-    vars->img_space = check_image("./ground.XPM");
+    vars->img_player_up = check_image("./tiger_up.XPM");
+    vars->img_player_right = check_image("./tiger_right.XPM");
+    vars->img_player_left = check_image("./tiger_left.XPM");
+    vars->img_player_down = check_image("./tiger_down.XPM");
+    vars->img_wall = check_image("./wall.XPM");
+    vars->img_ground = check_image("./ground.XPM");
     vars->img_enemy = check_image("./enemy.XPM");
-    vars->img_eva_dark = check_image("./boss.XPM");
-    vars->img_eva_white = check_image("./viktory.XPM");
+    vars->img_boss = check_image("./boss.XPM");
+    vars->img_victory = check_image("./victory.XPM");
 }
 
 void image_position(st_map *lst, t_vars *vars)
@@ -89,8 +89,8 @@ void work_minilib(st_map *lst)
 {
     t_vars	vars;
     vars.mlx = mlx_init();
-    if (lst->width > 37 || lst->height > 20)
-        error_output("Went beyond the map");
+    //if (lst->width > 37 || lst->height > 20)
+      //  error_output("Went beyond the map");
     vars.win = mlx_new_window(vars.mlx, lst->width * 64, lst->height * 64,
 							  "so_long");
     image_position(lst, &vars);

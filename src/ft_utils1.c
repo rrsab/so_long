@@ -22,7 +22,8 @@ void check_map(st_map *lst, int len_line, int gnl)
 
 void error_output(char *error)
 {
-    printf("%s", error);
+    printf("Error\n");
+	printf("%s", error);
     exit(1);
 }
 

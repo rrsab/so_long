@@ -11,7 +11,7 @@
 #include <string.h>
 #include "libft/libft.h"
 #include "gnl/get_next_line.h"
-#include <mlx.h>
+#include "mlx/mlx.h"
 #include <stddef.h>
 
 typedef struct st_pam
@@ -38,6 +38,7 @@ typedef struct	s_vars {
 	void	*img_player_down;
 	void	*img_boss;
 	void	*img_victory;
+	void	*img_victory1;
 	void	*img_enemy;
 	void	*img_wall;
 	void	*img_ground;
@@ -53,14 +54,18 @@ typedef struct	s_vars {
 
 int		get_next_line(int fd, char **line);
 
-void	error_output(char *error);
+void	ft_error(char *error);
 int		ft_strcmp(char *s1, char *s2);
 
-void	check_map_name(char *map_name);
-void	check_map_empty(st_map *lst, char *map);
-void	check_map(st_map *lst, int len_line, int gnl);
-void	check_map_parametrs(st_map *lst);
-void	work_minilib(st_map *lst);
-void	move_person(t_vars *vars, int keycode);
+void	ft_check_map_name(char *map_name);
+void	ft_check_map_empty(st_map *lst, char *map);
+void	ft_check_map(st_map *lst, int len_line, int gnl);
+void	ft_check_map_parametrs(st_map *lst);
+void	ft_work_minilib(st_map *lst);
+void	ft_play(t_vars *vars, int keycode);
+int		ft_close_window(void);
+int		ft_close(int keycode, t_vars *vars);
+void	ft_init_image(t_vars *vars,st_map *lst);
+
 
 #endif

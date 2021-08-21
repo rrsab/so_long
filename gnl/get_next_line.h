@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include <stddef.h>
 # include "../libft/libft.h"
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 100
 
 int		get_next_line(int fd, char **line);
 #endif

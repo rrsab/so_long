@@ -22,7 +22,6 @@ void	ft_image_print1(char a, t_vars *vars, int i, int k)
 
 void	ft_image_print(char a, t_vars *vars, int i, int k)
 {
-	mlx_string_put(vars->mlx, vars->win, 10, 30, 0x000FF000, "Step = ");
 	if (a == '1')
 		vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_wall, \
 										&vars->img_width, &vars->img_height);

@@ -27,7 +27,6 @@ void	ft_move_plaver23(t_vars *vars)
 
 void	ft_move_player(t_vars *vars, char s, int x, int y)
 {
-	char	*step;
 
 	if (s == '0' || s == 'C')
 	{
@@ -36,15 +35,10 @@ void	ft_move_player(t_vars *vars, char s, int x, int y)
 		{
 			vars->sum_goals--;
 			if (vars->sum_goals == 0)
-			{
 				ft_move_plaver23(vars);
-			}
 		}
 		vars->count++;
-		step = ft_itoa(vars->count);
-		mlx_string_put(vars->mlx, vars->win, 64, 30, 0x00000FF0, step);
-		printf("Step: %d\n", vars->count);
-		free(step);
+		ft_print_step(vars);
 		vars->var_map[vars->player_y][vars->player_x] = '0';
 		vars->player_x = x;
 		vars->player_y = y;
@@ -73,7 +67,7 @@ void	ft_move1(t_vars *vars, int move)
 	if (vars->sum_goals == 0 && x == vars->boss_x && vars->boss_y == y)
 	{
 		printf("Window closed.\n");
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 }
 
@@ -98,7 +92,7 @@ void	ft_move2(t_vars *vars, int move)
 	}
 	if (vars->sum_goals == 0 && x == vars->boss_x && vars->boss_y == y)
 	{
-		printf("Win");
-		exit(1);
+		printf("Window closed.\n");
+		exit(EXIT_SUCCESS);
 	}
 }

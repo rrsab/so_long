@@ -66,5 +66,6 @@ int		ft_close(int keycode, t_vars *vars);
 void	ft_init_image(t_vars *vars, t_map *lst);
 void	ft_move1(t_vars *vars, int move);
 void	ft_move2(t_vars *vars, int move);
+void	ft_print_step(t_vars *vars);
 
 #endif

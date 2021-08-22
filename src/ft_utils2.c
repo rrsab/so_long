@@ -49,3 +49,17 @@ void	ft_play(t_vars *vars, int keycode)
 	else if (keycode == 13)
 		ft_move2(vars, 13);
 }
+void	ft_print_step(t_vars *vars)
+{
+	char *step;
+
+	step = ft_itoa(vars->count);
+	vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_wall, \
+						&vars->img_width, &vars->img_height);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0 * 64, 0 * 64);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 1 * 64, 0 * 64);
+	mlx_string_put(vars->mlx, vars->win, 25, 30, 0x00000000, "STEP=");
+	mlx_string_put(vars->mlx, vars->win, 64, 30, 0x00000000, step);
+	printf("Step: %d\n", vars->count);
+	free(step);
+}

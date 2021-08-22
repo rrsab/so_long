@@ -39,7 +39,7 @@ void	ft_image_print(char a, t_vars *vars, int i, int k)
 							vars->img_width, k * vars->img_height);
 }
 
-void	ft_image_position(st_map *lst, t_vars *vars)
+void	ft_image_position(t_map *lst, t_vars *vars)
 {
 	int		i;
 	int		k;
@@ -59,7 +59,7 @@ void	ft_image_position(st_map *lst, t_vars *vars)
 	}
 }
 
-void	ft_work_minilib(st_map *lst)
+void	ft_work_minilib(t_map *lst)
 {
 	t_vars	vars;
 

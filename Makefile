@@ -17,17 +17,17 @@ LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 SRCS 		= src/so_long.c \
 			src/ft_utils1.c \
 			src/ft_utils2.c \
-			src/ft_actions1.c src/ft_checkmap.c src/ft_game.c\
+			src/ft_actions1.c src/ft_checkmap.c src/ft_game.c \
 			gnl/get_next_line.c
 
 SRCS_BONUS	=
-INCLUDE		= so_long.h \
+INCLUDE		= includes/so_long.h \
 
 LIBFT_A		= libft/libft.a
 MINI_LIBX	= mlx/libmlx.a
 FRAMEWORK	= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-.PHONY: all clean fclean re bonus libft norm mlx
+.PHONY: all clean fclean re libft norm mlx
 
 .o:.c 		$(INCLUDE)
 			$(CC) $(CFLAGS) $< -o $@
@@ -37,13 +37,11 @@ all:		libft mlx $(NAME)
 $(NAME):	$(OBJS) $(INCLUDE)
 			$(CC) $(OBJS) $(LIBFT_A) $(MINI_LIBX) $(FRAMEWORK) -o $(NAME)
 
-bonus:		libft $(NAME)
-
 norm:
 			norminette $(SRCS)
-			norminette $(SRCS_BONUS)
 			norminette $(INCLUDE)
-			make -C libft/ norm
+			norminette libft
+			norminette gnl
 
 libft:
 			make -C libft

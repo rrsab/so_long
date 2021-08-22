@@ -1,4 +1,16 @@
-#include "../so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/22 15:02:26 by salyce            #+#    #+#             */
+/*   Updated: 2021/08/22 15:03:01 by salyce           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long.h"
 
 int	ft_close(int keycode, t_vars *vars)
 {
@@ -26,16 +38,16 @@ void	ft_init_image(t_vars *vars, t_map *lst)
 	vars->var_map = lst->map;
 	vars->img_width = 64;
 	vars->img_height = 64;
-	vars->img_player_up = ft_check_image("./tiger_up.XPM");
-	vars->img_player_right = ft_check_image("./tiger_right.XPM");
-	vars->img_player_left = ft_check_image("./tiger_left.XPM");
-	vars->img_player_down = ft_check_image("./tiger_down.XPM");
-	vars->img_wall = ft_check_image("./wall.XPM");
-	vars->img_ground = ft_check_image("./ground.XPM");
-	vars->img_enemy = ft_check_image("./enemy.XPM");
-	vars->img_boss = ft_check_image("./boss1.XPM");
-	vars->img_victory = ft_check_image("./boss2.XPM");
-	vars->img_victory1 = ft_check_image("./boss3.XPM");
+	vars->img_player_up = ft_check_image("./xpm/tiger_up.XPM");
+	vars->img_player_right = ft_check_image("./xpm/tiger_right.XPM");
+	vars->img_player_left = ft_check_image("./xpm/tiger_left.XPM");
+	vars->img_player_down = ft_check_image("./xpm/tiger_down.XPM");
+	vars->img_wall = ft_check_image("./xpm/wall.XPM");
+	vars->img_ground = ft_check_image("./xpm/ground.XPM");
+	vars->img_enemy = ft_check_image("./xpm/enemy.XPM");
+	vars->img_boss = ft_check_image("./xpm/boss1.XPM");
+	vars->img_victory = ft_check_image("./xpm/boss2.XPM");
+	vars->img_victory1 = ft_check_image("./xpm/boss3.XPM");
 }
 
 void	ft_play(t_vars *vars, int keycode)
@@ -49,9 +61,10 @@ void	ft_play(t_vars *vars, int keycode)
 	else if (keycode == 13)
 		ft_move2(vars, 13);
 }
+
 void	ft_print_step(t_vars *vars)
 {
-	char *step;
+	char	*step;
 
 	step = ft_itoa(vars->count);
 	vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_wall, \

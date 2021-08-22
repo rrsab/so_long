@@ -1,4 +1,16 @@
-#include "../so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_actions1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/22 15:00:48 by salyce            #+#    #+#             */
+/*   Updated: 2021/08/22 15:01:26 by salyce           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long.h"
 
 void	ft_move_plaver22(t_vars *vars, int x, int y)
 {
@@ -27,7 +39,6 @@ void	ft_move_plaver23(t_vars *vars)
 
 void	ft_move_player(t_vars *vars, char s, int x, int y)
 {
-
 	if (s == '0' || s == 'C')
 	{
 		ft_move_plaver22(vars, x, y);

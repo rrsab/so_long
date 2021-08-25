@@ -6,7 +6,7 @@
 /*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 15:04:53 by salyce            #+#    #+#             */
-/*   Updated: 2021/08/22 15:04:55 by salyce           ###   ########.fr       */
+/*   Updated: 2021/08/25 20:11:52 by salyce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "gnl/get_next_line.h"
 # include "mlx/mlx.h"
 # include <stddef.h>
+#include <time.h>
 
 typedef struct t_pam
 {
@@ -62,6 +63,8 @@ typedef struct s_vars
 	int		boss_x;
 	int		boss_y;
 	int		sum_goals;
+	double  time;
+    int     frame;
 }	t_vars;
 
 int		get_next_line(int fd, char **line);
@@ -73,11 +76,12 @@ void	ft_check_map(t_map *lst, int len_line, int gnl);
 void	ft_check_map_parametrs(t_map *lst);
 void	ft_work_minilib(t_map *lst);
 void	ft_play(t_vars *vars, int keycode);
-int		ft_close_window(void);
+int		ft_close_window(t_vars *vars);
 int		ft_close(int keycode, t_vars *vars);
 void	ft_init_image(t_vars *vars, t_map *lst);
 void	ft_move1(t_vars *vars, int move);
 void	ft_move2(t_vars *vars, int move);
 void	ft_print_step(t_vars *vars);
+int		ft_animateenemy(t_vars *vars);
 
 #endif

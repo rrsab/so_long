@@ -6,7 +6,7 @@
 /*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 15:02:26 by salyce            #+#    #+#             */
-/*   Updated: 2021/08/22 15:03:01 by salyce           ###   ########.fr       */
+/*   Updated: 2021/08/25 20:44:21 by salyce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,30 @@ void	ft_print_step(t_vars *vars)
 	mlx_string_put(vars->mlx, vars->win, 64, 30, 0x00000000, step);
 	printf("Step: %d\n", vars->count);
 	free(step);
+}
+
+int	ft_animateenemy(t_vars *vars)
+{
+	if ((double)(clock()) / CLOCKS_PER_SEC - vars->time
+		>= (double)1 / 50)
+	{
+		vars->frame++;
+		vars->time = (double)(clock()) / CLOCKS_PER_SEC;
+	}
+	if (vars->frame > 1)
+		vars->frame = 0;
+
+	if (vars->frame == 0)
+	{
+		vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_victory, \
+						&vars->img_width, &vars->img_height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, vars->boss_x * 64, vars->boss_y * 64);
+	}
+	if (vars->frame == 1)
+	{
+		vars->img = mlx_xpm_file_to_image(vars->mlx, vars->img_victory1, \
+						&vars->img_width, &vars->img_height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, vars->boss_x * 64, vars->boss_y * 64);
+	}
+	return (0);	
 }

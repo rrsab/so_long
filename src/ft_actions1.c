@@ -6,7 +6,7 @@
 /*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 15:00:48 by salyce            #+#    #+#             */
-/*   Updated: 2021/08/22 15:01:26 by salyce           ###   ########.fr       */
+/*   Updated: 2021/08/25 20:48:44 by salyce           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,7 @@ void	ft_move_plaver22(t_vars *vars, int x, int y)
 
 void	ft_move_plaver23(t_vars *vars)
 {
-	vars->img = mlx_xpm_file_to_image(vars->mlx, \
-					vars->img_victory, &vars->img_width, &vars->img_height);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, \
-					vars->boss_x * 64, vars->boss_y * 64);
-	vars->img = mlx_xpm_file_to_image(vars->mlx, \
-					vars->img_victory1, &vars->img_width, &vars->img_height);
-	mlx_put_image_to_window(vars->mlx, vars->win, \
-					vars->img, vars->boss_x * 64, vars->boss_y * 64);
+	mlx_loop_hook(vars->mlx, ft_animateenemy, vars);
 }
 
 void	ft_move_player(t_vars *vars, char s, int x, int y)

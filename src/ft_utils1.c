@@ -50,8 +50,9 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	ft_close_window(void)
+int	ft_close_window(t_vars *vars)
 {
+	mlx_destroy_window(vars->mlx, vars->win);
 	printf("Window closed\n");
 	exit(EXIT_SUCCESS);
 }

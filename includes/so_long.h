@@ -26,6 +26,7 @@
 # include "mlx/mlx.h"
 # include <stddef.h>
 #include <time.h>
+#include "keycode.h"
 
 
 

@@ -3,13 +3,14 @@
 
 int	ft_close(int keycode, t_vars *vars)
 {
-	printf("keycode= %d\n", keycode);
-	if (keycode == 0 || keycode == 13 || keycode == 2 || keycode == 1 || \
-		keycode == 65361 || keycode == 65362 || keycode == 65363 || keycode == 65364)
+	//printf("keycode= %d\n", keycode);
+	if (keycode == ARROW_DOWN || keycode == ARROW_LEFT || \
+		keycode == ARROW_RIGHT || keycode == ARROW_UP)
 		ft_play(vars, keycode);
-	if (keycode == 53)
+	if (keycode == MAIN_PAD_ESC)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
+		printf("Window closed.\n");
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
@@ -44,13 +45,13 @@ void	ft_init_image(t_vars *vars, t_map *lst)
 void	ft_play(t_vars *vars, int keycode)
 {
 	//printf("keycode1=%d", keycode);
-	if (keycode == 65362)
+	if (keycode == ARROW_LEFT)
 		ft_move1(vars, 0);
-	else if (keycode == 65361)
-		ft_move1(vars, 1);
-	else if (keycode == 65364)
-		ft_move2(vars, 2);
-	else if (keycode == 65363)
+	else if (keycode == ARROW_RIGHT)
+		ft_move1(vars, 2);
+	else if (keycode == ARROW_UP)
+		ft_move2(vars, 1);
+	else if (keycode == ARROW_DOWN)
 		ft_move2(vars, 13);
 }
 

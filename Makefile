@@ -21,16 +21,20 @@ SRCS 		= src/so_long.c \
 			gnl/get_next_line.c
 
 SRCS_BONUS	=
+INCLUDES = -I/usr/include -Imlx
 INCLUDE		= includes/so_long.h \
 
 LIBFT_A		= libft/libft.a
-MINI_LIBX	= mlx/libmlx.a
-FRAMEWORK	= -Lmlx -lmlx -framework OpenGL -framework AppKit
+MINI_LIBX	= mlx/libmlx_Linux.a
+#FRAMEWORK	= -Lmlx -lmlx -framework OpenGL -framework AppKit
+FRAMEWORK	= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+
 
 .PHONY: all clean fclean re libft norm mlx
 
 .o:.c 		$(INCLUDE)
-			$(CC) $(CFLAGS) $< -o $@
+			$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+#			$(CC) $(CFLAGS) $< -o $@
 
 all:		libft mlx $(NAME)
 

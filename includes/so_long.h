@@ -27,6 +27,8 @@
 # include <stddef.h>
 #include <time.h>
 
+
+
 typedef struct t_pam
 {
 	char	**map;

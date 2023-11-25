@@ -1,20 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 15:02:26 by salyce            #+#    #+#             */
-/*   Updated: 2021/08/25 20:44:21 by salyce           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 int	ft_close(int keycode, t_vars *vars)
 {
-	if (keycode == 0 || keycode == 13 || keycode == 2 || keycode == 1)
+	printf("keycode= %d\n", keycode);
+	if (keycode == 0 || keycode == 13 || keycode == 2 || keycode == 1 || \
+		keycode == 65361 || keycode == 65362 || keycode == 65363 || keycode == 65364)
 		ft_play(vars, keycode);
 	if (keycode == 53)
 	{
@@ -52,13 +43,14 @@ void	ft_init_image(t_vars *vars, t_map *lst)
 
 void	ft_play(t_vars *vars, int keycode)
 {
-	if (keycode == 0)
+	//printf("keycode1=%d", keycode);
+	if (keycode == 65362)
 		ft_move1(vars, 0);
-	else if (keycode == 2)
-		ft_move1(vars, 2);
-	else if (keycode == 1)
-		ft_move2(vars, 1);
-	else if (keycode == 13)
+	else if (keycode == 65361)
+		ft_move1(vars, 1);
+	else if (keycode == 65364)
+		ft_move2(vars, 2);
+	else if (keycode == 65363)
 		ft_move2(vars, 13);
 }
 

@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_game.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: salyce <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 15:01:51 by salyce            #+#    #+#             */
-/*   Updated: 2021/08/25 20:47:19 by salyce           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
@@ -70,6 +59,14 @@ void	ft_image_position(t_map *lst, t_vars *vars)
 	}
 }
 
+int on_keypress(int keysym, t_vars *vars)
+{
+	(void)vars;
+	printf("Pressed key: %d\\n", keysym);
+	return (0);
+}
+ 
+
 void	ft_work_minilib(t_map *lst)
 {
 	t_vars	vars;
@@ -80,7 +77,8 @@ void	ft_work_minilib(t_map *lst)
 	vars.win = mlx_new_window(vars.mlx, lst->width * 64, lst->height * 64, \
 	"so_long");
 	ft_image_position(lst, &vars);
-	mlx_hook(vars.win, 2, 0, ft_close, &vars);
+	//mlx_hook(vars.win, 2, 1L << 0, on_keypress, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, ft_close, &vars);
 	mlx_hook(vars.win, 17, 1L << 2, ft_close_window, &vars);
 //	mlx_loop_hook(vars.mlx, ft_animateenemy, &vars);
 	mlx_loop(vars.mlx);
